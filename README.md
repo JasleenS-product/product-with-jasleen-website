@@ -301,3 +301,136 @@ For any queries or suggestions, please reach out through the contact form on the
 - Offline functionality
 - App manifest
 - Install prompts 
+
+## 🔄 Keeping Your Repository Updated
+
+### Pull Latest Changes
+```bash
+# Before making any changes, always pull the latest updates
+git pull origin main
+
+# If you have local changes, you might want to stash them first
+git stash
+git pull origin main
+git stash pop
+```
+
+### Making and Pushing Changes
+1. **Create a New Branch**
+   ```bash
+   # Create and switch to a new branch
+   git checkout -b feature/your-changes
+   ```
+
+2. **Make Your Changes**
+   - Edit files in your code editor
+   - Test changes locally at `http://localhost:8090`
+   - Ensure all features work as expected
+
+3. **Commit Your Changes**
+   ```bash
+   # Add modified files
+   git add .
+
+   # Commit with a descriptive message
+   git commit -m "Description of your changes"
+   ```
+
+4. **Push Your Changes**
+   ```bash
+   # Push your branch to remote
+   git push origin feature/your-changes
+   ```
+
+5. **Create Pull Request**
+   - Go to GitHub repository
+   - Click "Compare & pull request"
+   - Review your changes
+   - Submit pull request
+
+### Synchronization Workflow
+```bash
+# Daily Workflow
+1. git pull origin main          # Get latest changes
+2. git checkout -b feature/xyz   # Create feature branch
+3. [Make your changes]
+4. git add .                     # Stage changes
+5. git commit -m "message"       # Commit changes
+6. git push origin feature/xyz   # Push to remote
+
+# If main branch has been updated
+1. git checkout main            # Switch to main
+2. git pull origin main        # Get latest main
+3. git checkout feature/xyz    # Back to your branch
+4. git merge main             # Merge main into your branch
+5. [Resolve any conflicts]
+6. git push origin feature/xyz # Push updated branch
+```
+
+### Conflict Resolution
+If you encounter merge conflicts:
+```bash
+# 1. Identify conflicted files
+git status
+
+# 2. Open conflicted files and resolve conflicts
+# Look for markers like:
+# <<<<<<< HEAD
+# your changes
+# =======
+# their changes
+# >>>>>>> branch-name
+
+# 3. After resolving, mark as resolved
+git add <resolved-file>
+
+# 4. Complete the merge
+git commit -m "Resolved merge conflicts"
+```
+
+### Best Practices
+1. **Before Starting Work**
+   - Always pull latest changes
+   - Create new branch for features
+   - Test locally before pushing
+
+2. **During Development**
+   - Commit frequently with clear messages
+   - Keep branches focused on single features
+   - Test changes at `http://localhost:8090`
+
+3. **Before Pushing**
+   - Review your changes
+   - Run all tests
+   - Update documentation if needed
+
+4. **After Pushing**
+   - Create pull request
+   - Wait for review/approval
+   - Delete branch after merging
+
+### Common Issues and Solutions
+1. **Uncommitted Changes Blocking Pull**
+   ```bash
+   # Save changes without committing
+   git stash
+   git pull origin main
+   git stash pop
+   ```
+
+2. **Wrong Branch Changes**
+   ```bash
+   # Move changes to correct branch
+   git stash
+   git checkout correct-branch
+   git stash pop
+   ```
+
+3. **Reverting Changes**
+   ```bash
+   # Revert last commit
+   git revert HEAD
+
+   # Revert to specific commit
+   git revert <commit-hash>
+   ``` 
