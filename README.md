@@ -433,4 +433,113 @@ git commit -m "Resolved merge conflicts"
 
    # Revert to specific commit
    git revert <commit-hash>
-   ``` 
+   ```
+
+### Reviewing Deployed Changes Locally
+
+1. **Pull Latest Deployed Code**
+   ```bash
+   # Switch to main branch
+   git checkout main
+
+   # Pull latest changes
+   git pull origin main
+
+   # Start local server
+   python3 -m http.server 8090
+   ```
+
+2. **Verify Changes**
+   - Open `http://localhost:8090` in your browser
+   - Check all updated features:
+     - Navigation functionality
+     - Styling updates
+     - Content changes
+     - Interactive elements
+
+3. **Local Testing Checklist**
+   ```bash
+   # 1. Check all pages
+   http://localhost:8090/index.html
+   http://localhost:8090/about.html
+   http://localhost:8090/offerings.html
+   http://localhost:8090/case-studies.html
+   http://localhost:8090/contact.html
+
+   # 2. Test in different browsers
+   # 3. Check responsive layouts
+   # 4. Verify all interactions
+   ```
+
+4. **If Changes Are Not Visible**
+   ```bash
+   # Clear browser cache
+   1. Press Cmd+Shift+R (Mac) or Ctrl+Shift+R (Windows) for hard reload
+   2. Or clear browser cache manually
+
+   # Restart local server
+   1. Stop current server (Ctrl+C)
+   2. Start server again:
+   python3 -m http.server 8090
+   ```
+
+5. **Comparing with Live Version**
+   - Keep local version (`http://localhost:8090`) open in one tab
+   - Open deployed version in another tab
+   - Compare side by side for:
+     - Visual consistency
+     - Feature parity
+     - Content accuracy
+
+6. **Local Development Tips**
+   ```bash
+   # To switch between versions
+   git checkout <commit-hash>    # View specific version
+   git checkout main            # Return to latest version
+
+   # To track changes
+   git log --oneline           # View commit history
+   git show <commit-hash>      # View specific changes
+   ```
+
+7. **Troubleshooting Local Preview**
+   - If pages don't load:
+     ```bash
+     # Check if server is running
+     lsof -i :8090
+
+     # Kill existing process if needed
+     kill -9 <PID>
+
+     # Restart server
+     python3 -m http.server 8090
+     ```
+   
+   - If styles are not updating:
+     ```bash
+     # Force refresh browser
+     Cmd+Shift+R (Mac)
+     Ctrl+Shift+R (Windows)
+     ```
+
+   - If files are missing:
+     ```bash
+     # Verify branch and status
+     git status
+     git branch
+
+     # Reset to latest version
+     git reset --hard origin/main
+     ```
+
+### Version Management
+```bash
+# View available versions
+git tag
+
+# Switch to specific version
+git checkout v1.0.0
+
+# Return to latest
+git checkout main
+``` 
