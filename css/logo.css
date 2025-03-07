@@ -1,0 +1,64 @@
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    text-decoration: none;
+}
+
+.logo-mark {
+    width: 52px;
+    height: 52px;
+    background: linear-gradient(135deg, #2B3A67 0%, #4A6FE3 100%);
+    border-radius: 12px;
+    position: relative;
+    transform: rotate(-10deg);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 20px rgba(43, 58, 103, 0.15);
+}
+
+.logo-mark::before {
+    content: '';
+    position: absolute;
+    width: 60%;
+    height: 60%;
+    top: 20%;
+    left: 20%;
+    background: white;
+    border-radius: 8px;
+}
+
+.logo-mark::after {
+    content: '';
+    position: absolute;
+    width: 40%;
+    height: 40%;
+    top: 30%;
+    left: 30%;
+    background: var(--gradient-primary);
+    border-radius: 4px;
+}
+
+.logo-text {
+    font-family: var(--font-heading);
+    font-size: 1.85rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #2B3A67 0%, #4A6FE3 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-decoration: none;
+    background-size: 200% auto;
+    animation: textGradient 4s ease infinite;
+}
+
+.logo-text span {
+    font-size: 1.5rem;
+    font-weight: 500;
+    background: linear-gradient(135deg, #4A6FE3 0%, #8E9BBA 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-left: 0.5rem;
+}
+
+.logo-container:hover .logo-mark {
+    transform: rotate(225deg);
+} 
