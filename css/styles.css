@@ -143,86 +143,51 @@ p {
     position: relative;
 }
 
-/* Hide hamburger menu icon */
-.nav-toggle,
-.hamburger-menu,
-.menu-icon,
-.nav-container .hamburger-menu,
-.nav-container .menu-icon,
-.header .nav-toggle,
-.header .hamburger-menu,
-.header .menu-icon,
-button[aria-label="Menu"],
-[class*="hamburger"],
-[class*="menu-icon"],
-.nav-container button,
-.header button,
-.mobile-menu-button,
-#nav-toggle,
-#menu-toggle,
-.menu-button {
-    display: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
-    position: absolute !important;
-    width: 0 !important;
-    height: 0 !important;
-    overflow: hidden !important;
-    clip: rect(0, 0, 0, 0) !important;
-    margin: -1px !important;
-    padding: 0 !important;
-    border: 0 !important;
-    min-width: 0 !important;
-    min-height: 0 !important;
-    max-width: 0 !important;
-    max-height: 0 !important;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    text-decoration: none;
-    z-index: 1000;
-}
-
-.logo img {
-    height: 40px;
-    width: auto;
-    margin-right: 10px;
-}
-
-nav {
-    position: relative;
-    z-index: 1000;
-    width: 100%;
-    background: var(--background);
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.mobile-menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.5rem;
+.logo-container {
+    flex-shrink: 0;
     z-index: 1001;
+    text-decoration: none;
+    font-family: var(--font-serif);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    color: var(--accent-primary);
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    gap: var(--space-1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    letter-spacing: -0.3px;
+}
+
+.logo-container img {
+    width: auto;
+    min-width: 160px;
+    height: 40px;
+    padding: 0 var(--space-2);
+    margin-right: var(--space-8);
+}
+
+.logo-container:hover {
+    color: var(--accent-secondary);
+}
+
+.logo-text {
+    font-family: var(--font-serif);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    color: var(--accent-primary);
+    letter-spacing: -0.3px;
+    white-space: nowrap;
+    line-height: 1;
 }
 
 .nav-links {
     display: flex;
-    gap: 2rem;
-    align-items: center;
+    gap: var(--space-8);
     margin: 0;
     padding: 0;
     list-style: none;
+    align-items: center;
 }
 
 .nav-link {
