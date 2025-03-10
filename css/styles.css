@@ -116,7 +116,7 @@ p {
     margin-bottom: var(--space-6);
 }
 
-/* Header and Navigation Improvements */
+/* Header and Navigation */
 .header {
     position: fixed;
     top: 0;
@@ -157,6 +157,7 @@ p {
     gap: var(--space-1);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     letter-spacing: -0.3px;
+    padding-left: var(--space-4);
 }
 
 .logo-container img {
@@ -334,11 +335,12 @@ p {
 @media (max-width: 768px) {
     .logo-container {
         font-size: var(--text-lg);
+        padding-left: var(--space-2);
     }
 
     .logo-container img {
         min-width: 120px;
-        height: 30px;
+        height: 32px;
         margin-right: var(--space-4);
     }
 
@@ -2306,7 +2308,7 @@ section:first-of-type {
     color: var(--accent-tertiary);
 }
 
-/* Mobile Menu Styles */
+/* Mobile Menu */
 .mobile-menu-toggle {
     display: none;
     background: none;
@@ -2448,4 +2450,31 @@ section:first-of-type {
 /* Add JavaScript for mobile menu toggle */
 .nav-links.show {
     display: flex;
+}
+
+.footer-brand {
+    font-family: var(--font-serif);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    color: white;
+    margin-bottom: var(--space-4);
+}
+
+.footer-brand .text-highlight {
+    color: var(--accent-tertiary);
+    position: relative;
+    padding-left: 12px;
+}
+
+.footer-brand .text-highlight::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 3px;
+    height: 20px;
+    background-color: #FFDD00;
+    border-radius: 2px;
+    opacity: 0.8;
+    transform: translateY(-50%);
 }
