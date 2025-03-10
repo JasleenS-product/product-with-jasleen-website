@@ -63,6 +63,17 @@ document.addEventListener('DOMContentLoaded', function() {
     mobileMenuToggle.addEventListener('click', function() {
         this.classList.toggle('active');
         navLinks.classList.toggle('active');
+        
+        // Toggle hamburger animation
+        const hamburger = this.querySelector('.hamburger');
+        if (hamburger.classList.contains('active')) {
+            hamburger.style.transform = 'rotate(0)';
+            hamburger.style.backgroundColor = 'var(--text-primary)';
+        } else {
+            hamburger.style.transform = 'rotate(45deg)';
+            hamburger.style.backgroundColor = 'transparent';
+        }
+        hamburger.classList.toggle('active');
     });
 
     // Close menu when clicking outside
@@ -70,6 +81,10 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!nav.contains(event.target) && navLinks.classList.contains('active')) {
             mobileMenuToggle.classList.remove('active');
             navLinks.classList.remove('active');
+            const hamburger = mobileMenuToggle.querySelector('.hamburger');
+            hamburger.classList.remove('active');
+            hamburger.style.transform = 'rotate(0)';
+            hamburger.style.backgroundColor = 'var(--text-primary)';
         }
     });
 
@@ -78,6 +93,10 @@ document.addEventListener('DOMContentLoaded', function() {
         if (window.innerWidth > 768 && navLinks.classList.contains('active')) {
             mobileMenuToggle.classList.remove('active');
             navLinks.classList.remove('active');
+            const hamburger = mobileMenuToggle.querySelector('.hamburger');
+            hamburger.classList.remove('active');
+            hamburger.style.transform = 'rotate(0)';
+            hamburger.style.backgroundColor = 'var(--text-primary)';
         }
     });
 }); 

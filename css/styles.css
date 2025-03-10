@@ -181,6 +181,29 @@ p {
     line-height: 1;
 }
 
+.logo-highlight {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    color: var(--accent-primary);
+    padding-left: 12px;
+    height: 100%;
+}
+
+.logo-highlight::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 4px;
+    height: 24px;
+    background-color: #FFDD00;
+    border-radius: 2px;
+    opacity: 1;
+    box-shadow: 0 0 12px rgba(255, 221, 0, 0.5);
+    transform: translateY(-50%);
+}
+
 .nav-links {
     display: flex;
     gap: var(--space-8);
@@ -203,7 +226,11 @@ p {
     text-transform: uppercase;
 }
 
-/* Subtle underline effect */
+.nav-link:hover {
+    color: var(--accent-primary);
+    transform: translateY(-1px);
+}
+
 .nav-link::after {
     content: '';
     position: absolute;
@@ -215,11 +242,6 @@ p {
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     transform: translateX(-50%);
     opacity: 0;
-}
-
-.nav-link:hover {
-    color: var(--accent-primary);
-    transform: translateY(-1px);
 }
 
 .nav-link:hover::after {
@@ -310,9 +332,39 @@ p {
 }
 
 @media (max-width: 768px) {
+    .logo-container {
+        font-size: var(--text-lg);
+    }
+
+    .logo-container img {
+        min-width: 120px;
+        height: 30px;
+        margin-right: var(--space-4);
+    }
+
     .nav-links {
+        display: none;
+        position: fixed;
+        top: 80px;
+        left: 0;
+        right: 0;
+        background: var(--bg-primary);
+        flex-direction: column;
+        align-items: center;
+        padding: var(--space-4);
         gap: var(--space-4);
-        flex-wrap: wrap;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-link {
+        font-size: var(--text-base);
+        padding: var(--space-2) var(--space-4);
+        width: 100%;
+        text-align: center;
     }
 
     .nav-link {
@@ -360,29 +412,6 @@ p {
     border-radius: 4px;
     opacity: 1;
     box-shadow: 0 0 20px rgba(255, 221, 0, 0.6);
-}
-
-.logo-highlight {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    color: var(--accent-primary);
-    padding-left: 12px;
-    height: 100%;
-}
-
-.logo-highlight::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 4px;
-    height: 24px;
-    background-color: #FFDD00;
-    border-radius: 2px;
-    opacity: 1;
-    box-shadow: 0 0 12px rgba(255, 221, 0, 0.5);
-    transform: translateY(-50%);
 }
 
 /* Add enhanced hover animation */
