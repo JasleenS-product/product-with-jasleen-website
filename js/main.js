@@ -55,41 +55,29 @@ window.addEventListener('load', animateOnScroll);
 
 // Mobile Menu Toggle
 document.addEventListener('DOMContentLoaded', function() {
-    const menuToggle = document.querySelector('.mobile-menu-toggle');
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
     const navLinks = document.querySelector('.nav-links');
-    const hamburger = document.querySelector('.hamburger');
+    const nav = document.querySelector('nav');
 
-    menuToggle.addEventListener('click', function() {
-        navLinks.classList.toggle('show');
-        hamburger.classList.toggle('active');
-        
-        // Animate hamburger
-        if (hamburger.classList.contains('active')) {
-            hamburger.style.transform = 'rotate(45deg)';
-            hamburger.style.backgroundColor = 'transparent';
-            hamburger.querySelector('::before').style.transform = 'rotate(90deg) translate(-8px, 0)';
-            hamburger.querySelector('::after').style.transform = 'rotate(90deg) translate(8px, 0)';
-        } else {
-            hamburger.style.transform = 'rotate(0)';
-            hamburger.style.backgroundColor = 'var(--text-primary)';
-            hamburger.querySelector('::before').style.transform = 'none';
-            hamburger.querySelector('::after').style.transform = 'none';
-        }
+    // Toggle mobile menu
+    mobileMenuToggle.addEventListener('click', function() {
+        this.classList.toggle('active');
+        navLinks.classList.toggle('active');
     });
 
     // Close menu when clicking outside
     document.addEventListener('click', function(event) {
-        if (!event.target.closest('.nav-container')) {
-            navLinks.classList.remove('show');
-            hamburger.classList.remove('active');
+        if (!nav.contains(event.target) && navLinks.classList.contains('active')) {
+            mobileMenuToggle.classList.remove('active');
+            navLinks.classList.remove('active');
         }
     });
 
-    // Close menu when window is resized to desktop
+    // Close menu when window is resized to desktop size
     window.addEventListener('resize', function() {
-        if (window.innerWidth > 768) {
-            navLinks.classList.remove('show');
-            hamburger.classList.remove('active');
+        if (window.innerWidth > 768 && navLinks.classList.contains('active')) {
+            mobileMenuToggle.classList.remove('active');
+            navLinks.classList.remove('active');
         }
     });
 }); 
