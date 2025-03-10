@@ -53,17 +53,43 @@ const animateOnScroll = () => {
 window.addEventListener('scroll', animateOnScroll);
 window.addEventListener('load', animateOnScroll);
 
-// Mobile menu toggle
-const mobileMenuButton = document.createElement('button');
-mobileMenuButton.className = 'mobile-menu-button';
-mobileMenuButton.innerHTML = '<i class="fas fa-bars"></i>';
-document.querySelector('.nav-container').appendChild(mobileMenuButton);
+// Mobile Menu Toggle
+document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.querySelector('.mobile-menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    const hamburger = document.querySelector('.hamburger');
 
-const navLinks = document.querySelector('.nav-links');
+    menuToggle.addEventListener('click', function() {
+        navLinks.classList.toggle('show');
+        hamburger.classList.toggle('active');
+        
+        // Animate hamburger
+        if (hamburger.classList.contains('active')) {
+            hamburger.style.transform = 'rotate(45deg)';
+            hamburger.style.backgroundColor = 'transparent';
+            hamburger.querySelector('::before').style.transform = 'rotate(90deg) translate(-8px, 0)';
+            hamburger.querySelector('::after').style.transform = 'rotate(90deg) translate(8px, 0)';
+        } else {
+            hamburger.style.transform = 'rotate(0)';
+            hamburger.style.backgroundColor = 'var(--text-primary)';
+            hamburger.querySelector('::before').style.transform = 'none';
+            hamburger.querySelector('::after').style.transform = 'none';
+        }
+    });
 
-mobileMenuButton.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    mobileMenuButton.innerHTML = navLinks.classList.contains('active') 
-        ? '<i class="fas fa-times"></i>' 
-        : '<i class="fas fa-bars"></i>';
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+        if (!event.target.closest('.nav-container')) {
+            navLinks.classList.remove('show');
+            hamburger.classList.remove('active');
+        }
+    });
+
+    // Close menu when window is resized to desktop
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+            navLinks.classList.remove('show');
+            hamburger.classList.remove('active');
+        }
+    });
 }); 
