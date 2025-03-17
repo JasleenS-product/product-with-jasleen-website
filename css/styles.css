@@ -751,6 +751,7 @@ p {
         border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         flex-wrap: nowrap;
         background: rgba(255, 255, 255, 0.5);
+        width: 100%;
     }
 
     .stat-item {
@@ -758,13 +759,16 @@ p {
         text-align: center;
         min-width: 0;
         padding: 0 var(--space-1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .stat-number {
-        font-size: var(--text-2xl);
+        font-size: var(--text-xl);
         font-weight: 600;
         color: var(--text-primary);
-        display: block;
+        white-space: nowrap;
         margin-bottom: 4px;
         line-height: 1;
     }
@@ -775,9 +779,10 @@ p {
         text-transform: uppercase;
         letter-spacing: 0.05em;
         line-height: 1.2;
-        display: block;
         white-space: normal;
         word-wrap: break-word;
+        text-align: center;
+        width: 100%;
     }
 
     .nav-links {
@@ -2259,7 +2264,7 @@ section:first-of-type {
     }
 
     .case-study-content-right h3 {
-        font-size: 24px;
+        font-size: var(--text-xl);
         max-width: 100%;
     }
 }
@@ -2349,7 +2354,7 @@ section:first-of-type {
     }
 
     .offerings-banner-content h2 {
-        font-size: 28px;
+        font-size: var(--text-2xl);
     }
 
     .offerings-banner-images {
