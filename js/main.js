@@ -39,19 +39,24 @@ window.addEventListener('scroll', () => {
 // Add animation on scroll
 const animateOnScroll = () => {
     const elements = document.querySelectorAll('.service-card, .process-step, .testimonial-card');
+    const triggerBottom = window.innerHeight * 0.8; // Trigger animation when element is 80% visible
     
     elements.forEach(element => {
         const elementTop = element.getBoundingClientRect().top;
-        const elementBottom = element.getBoundingClientRect().bottom;
         
-        if (elementTop < window.innerHeight && elementBottom > 0) {
+        if (elementTop < triggerBottom) {
             element.classList.add('animate');
         }
     });
 };
 
+// Trigger animations on initial load and scroll
 window.addEventListener('scroll', animateOnScroll);
-window.addEventListener('load', animateOnScroll);
+window.addEventListener('load', () => {
+    // Add a small delay on initial load to ensure elements are properly positioned
+    setTimeout(animateOnScroll, 100);
+});
+window.addEventListener('resize', animateOnScroll);
 
 // Mobile Menu Toggle
 document.addEventListener('DOMContentLoaded', function() {
